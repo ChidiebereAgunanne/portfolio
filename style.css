@@ -1,3 +1,17 @@
+/* Global Styles */
+html {
+  color-scheme: light dark;
+}
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+}
+
+.color-scheme select {
+  font: inherit;
+}
 body {
   /* Set line height to 1.5 times the font size
 	   and use the OS’s UI font as the website font
@@ -12,7 +26,8 @@ nav {
   margin-bottom: 0.5em;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: oklch(80% 3% 200);
+  --border-color: oklch(50% 10% 200 / 40%);
+  border-bottom-color: var(--border-color);
 }
 nav a {
   flex: 1;
@@ -23,7 +38,7 @@ nav a {
 }
 nav a.current {
   border-bottom-width: 0.4em;
-  border-bottom-color: oklch(62.299% 0.01072 205.215);
+  border-bottom-color: var(--border-color);
   border-bottom-style: solid;
   font-weight: bold;
 }
@@ -37,7 +52,7 @@ a:hover {
   border-bottom-width: 0.4em;
   border-bottom-color: var(--color-accent);
   border-bottom-style: solid;
-  background-color: oklch(from var(--color-accent) 95% 5% h);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 /* Contact Page*/
 form {
