@@ -118,3 +118,25 @@ h1, h2, h3, h4, h5, h6{
   color: gray;
 }
 
+dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem 1rem;
+}
+
+dt {
+  grid-row: 1; 
+  color: gray;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+dd {
+  grid-row: 2; 
+  margin: 0;
+  font-size: 25px;
+}
+.projects img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
