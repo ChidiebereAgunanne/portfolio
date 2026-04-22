@@ -6,27 +6,31 @@
     <title>Contact</title>
     <link rel="stylesheet" href="../style.css">
     <script type="module" src="../global.js"></script>
+    <script type="module" src="contact.js"></script>
 </head>
 <body>
     
     <h1>Contact</h1>
-    <form action="mailto:your@email.com" method="GET">
+    <form action="mailto:chidiebereagunanne@gmail.com">
         <label>
             Your Email:
-            <input type="email" name="email">
+            <input type="email" name="email" required>
         </label>
         <br><br>
+
         <label>
             Subject:
-            <input name="subject">
+            <input name="subject" required>
         </label>
         <br><br>
+
         <label>
             Message:
-            <textarea name="body"></textarea>
+            <textarea name="body" required></textarea>
         </label>
         <br><br>
-        <button>Send</button>
+
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>
