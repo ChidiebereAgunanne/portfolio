@@ -1,4 +1,3 @@
-
 let pages = [
   { url: 'index.html', title: 'Home' },
   { url: 'projects/', title: 'Projects' },
