@@ -2,7 +2,7 @@
     {
         "title": "Patterns in ICE Arrests by Country of Citizenship, 2023–2025",
         "year": "2026",
-        "image": "../images/ice-arrests.png",
+        "image": "./images/ice-arrests.png",
         "description": "This study examines how ICE arrests by country of citizenship changed from 2023 to 2025 using publicly available enforcement data and statistical analysis. It finds that arrests are consistently concentrated among Latin American countries, especially Mexico, Guatemala, and Honduras though their shares shift moderately over time."
     },
     {
@@ -14,7 +14,7 @@
     {
         "title": "Modesto High Girls Basketball Scoreboard",
         "year": "2023",
-        "image": "../images/scoresheet.png",
+        "image": "./images/scoresheet.png",
         "description": "Created an online sorcesheet for the Modesto High Girls Basketball team using ReactNative. The sorcesheet allows users to input player names, points scored, and other relevant statistics during games. It provides a user-friendly interface for tracking the team's performance and can be easily updated in real-time during matches."
     },
     {
