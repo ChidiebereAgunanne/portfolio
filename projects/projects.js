@@ -8,6 +8,7 @@ const titleElement = document.querySelector('.projects-title');
 titleElement.textContent = `${projects.length} Projects`;
 
 let query = '';
+let selectedIndex = -1;
 let searchInput = document.querySelector('.searchBar');
 function renderPieChart(projectsGiven) {
   let newRolledData = d3.rollups(
@@ -20,17 +21,42 @@ function renderPieChart(projectsGiven) {
   });
   newData.sort((a, b) => b.label - a.label);
 
-  let newArcGenerator = d3.arc().innerRadius(0).outerRadius(50); // ← added
+  let newArcGenerator = d3.arc().innerRadius(0).outerRadius(50); 
   let newSliceGenerator = d3.pie().value((d) => d.value);
   let newArcData = newSliceGenerator(newData);
-  let newArcs = newArcData.map((d) => newArcGenerator(d));        // ← fixed
+  let newArcs = newArcData.map((d) => newArcGenerator(d));        
 
-  d3.select('svg').selectAll('path').remove();
+  let svg = d3.select('svg');
+  svg.selectAll('path').remove();
   d3.select('.legend').selectAll('li').remove();
 
   let colors = d3.scaleOrdinal(d3.schemeTableau10);
-  newArcs.forEach((arc, i) => {                                   // ← fixed
-    d3.select('svg').append('path').attr('d', arc).attr('fill', colors(i));
+  newArcs.forEach((arc, i) => {     
+    svg
+      .append('path')
+      .attr('d', arc)
+      .attr('fill', colors(i))
+      .attr('class', i === selectedIndex ? 'selected' : '')
+      .on('click', () => {
+        selectedIndex = selectedIndex === i ? -1 : i; 
+        svg
+          .selectAll('path')
+          .attr('class', (_, idx) => idx === selectedIndex ? 'selected' : '');
+
+        legend
+          .selectAll('li')
+          .attr('class', (_, idx) =>
+            idx === selectedIndex ? 'legend-item selected' : 'legend-item'
+          );
+
+        if (selectedIndex === -1) {
+          renderProjects(projectsGiven, projectsContainer, 'h2');
+        } else {
+          let selectedYear = newData[selectedIndex].label;
+          let yearFiltered = projects.filter((p) => p.year === selectedYear);
+          renderProjects(yearFiltered, projectsContainer, 'h2');
+        }
+      });                             
   });
 
   let legend = d3.select('.legend');
