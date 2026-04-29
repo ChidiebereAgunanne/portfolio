@@ -120,6 +120,17 @@ h1, h2, h3, h4, h5, h6{
 .label {
   margin-right: 6px;
 }
+.searchBar {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem; /* extra right padding for the × button */
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  outline: none;
+  margin-bottom: 25px;
+}
+
 /* Resume Page */
 .experience article{
   display: grid;
