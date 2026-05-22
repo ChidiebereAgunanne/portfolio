@@ -1,4 +1,5 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
+import scrollama from 'https://cdn.jsdelivr.net/npm/scrollama@3.2.0/+esm';
 
 let xScale;
 let yScale;
@@ -27,7 +28,7 @@ function processCommits(data) {
 
       let ret = {
         id: commit,
-        url: 'https://github.com/vis-society/lab-7/commit/' + commit,
+        url: 'https://github.com/ChidiebereAgunanne/portfolio/commit/' + commit,
         author,
         date,
         time,
@@ -45,7 +46,8 @@ function processCommits(data) {
       });
 
       return ret;
-    });
+    })
+    .sort((a, b) => a.datetime - b.datetime);
 }
 
 function renderCommitInfo(data, commits) {
@@ -398,3 +400,48 @@ function updateFileDisplay(filteredCommits){
     .attr('class', 'loc')
     .attr('style', (d) => `--color: ${colors(d.type)}`)
 }
+
+d3.select('#scatter-story')
+  .selectAll('.step')
+  .data(commits)
+  .join('div')
+  .attr('class', 'step')
+  .html(
+    (d, i) => `
+		On ${d.datetime.toLocaleString('en', {
+      dateStyle: 'full',
+      timeStyle: 'short',
+    })},
+		I made <a href="${d.url}" target="_blank">
+  ${i ? 'another commit' : 'my first commit'}
+  </a>,
+  editing ${d.totalLines} lines across ${
+  new Set(d.lines.map((d) => d.file)).size
+  } files.
+	`,
+  );
+
+function onStepEnter(response) {
+  const currentCommit = response.element.__data__;
+
+  filteredCommits = commits.filter(
+    (d) => d.datetime <= currentCommit.datetime
+  );
+
+  updateScatterPlot(data, filteredCommits);
+  renderCommitInfo(data, filteredCommits);
+  updateFileDisplay(filteredCommits);
+
+  timeDisplay.textContent = currentCommit.datetime.toLocaleString('en-US', {
+    dateStyle: 'long',
+    timeStyle: 'short',
+  });
+}
+
+const scroller = scrollama();
+scroller
+  .setup({
+    container: '#scrolly-1',
+    step: '#scrolly-1 .step',
+  })
+  .onStepEnter(onStepEnter);

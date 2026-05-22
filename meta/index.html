@@ -1,58 +1,69 @@
-<html lang="en">
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meta</title>
-    <link rel="stylesheet" href="../style.css">
-    <script type="module" src="../global.js"></script>
-    <script type="module" src="main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meta</title>
+  <link rel="stylesheet" href="../style.css">
+  <script type="module" src="../global.js"></script>
+  <script type="module" src="main.js"></script>
 </head>
+
 <body>
-    <header>
-        <h1>Meta</h1>
-    </header>
-    <main>
-        <p>This is the Meta page.</p>
-    </main>
+  <header>
+    <h1>Meta</h1>
+  </header>
+
+  <main>
+    <p>This is the Meta page.</p>
+  </main>
+
+  <div id="stats"></div>
+
+  <h2>Commits by time of day</h2>
+
+ <div id="scrolly-1">
+  <div id="scatter-story">
+    <p>Some filler text here explaining the scatter plot.</p>
+  </div>
+
+  <div id="scatter-plot">
     <div id="selection-stats">
-        <label for="commit-progress">Show commits until:
-            <input id="commit-progress" type="range" min="0" max="100" value="100">
-            <time id = "commit-time"></time>
-       </label>
+      <label for="commit-progress">
+        Show commits until:
+        <input id="commit-progress" type="range" min="0" max="100" value="100">
+        <time id="commit-time"></time>
+      </label>
     </div>
-    <dl id="file-stats" class="stats">
-        <dt>File name </dt>
 
-        <dt>Total Lines Edited</dt>
-    </dl>
-    <dl id="files">
-        <!-- we want the following structure for each file:
-        <div>
-            <dt>
-            <code>{file.name}</code>
-            </dt>
-            <dd>{file.lines.length} lines</dd>
-        </div>
-  -->
-    </dl>
-    </div>
-    <div id="stats"></div>
-    <h2>Commits by time of day</h2>
     <div id="chart"></div>
+
     <dl id="commit-tooltip" class="info tooltip" hidden>
-        <dt>Commit</dt>
-        <dd>
-            <a href="" id="commit-link" target="_blank"></a>
-        </dd>
+      <dt>Commit</dt>
+      <dd>
+        <a href="" id="commit-link" target="_blank"></a>
+      </dd>
 
-        <dt>Date</dt>
-            <dd id="commit-date"></dd>
-
-    <!-- Add: Time, author, lines edited -->
+      <dt>Date</dt>
+      <dd id="commit-date"></dd>
     </dl>
-    <dl id="language-breakdown" class="stats"></dl>
+
     <p id="selection-count">No commits selected</p>
+    <dl id="language-breakdown" class="stats"></dl>
+  </div>
+</div>
+
+<section id="files-section">
+  <h2>Files edited</h2>
+
+  <dl id="file-stats" class="stats">
+    <dt>File name</dt>
+    <dt>Total Lines Edited</dt>
+  </dl>
+
+  <dl id="files">
+    <!-- file entries go here -->
+  </dl>
+</section>
 </body>
 </html>
