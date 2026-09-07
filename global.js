@@ -2,7 +2,7 @@ let pages = [
   { url: 'index.html', title: 'Home' },
   { url: 'projects/', title: 'Projects' },
   { url: 'contact/', title: 'Contact' },
-  { url: 'resume/', title: 'Resume' },
+  { url: 'Chidiebere_s_Resume.pdf', title: 'Resume' },
   { url: 'meta/', title: 'Meta' },
   { url: 'https://github.com/ChidiebereAgunanne', title: 'GitHub' }
 ];

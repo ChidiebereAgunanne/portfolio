@@ -146,38 +146,6 @@ path {
   }
 }
 
-/* Resume Page */
-.experience article{
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0.2em 1em;
-}
-.experience p:first-of-type{
-    color: gray;    
-}
-.education article {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0.2em 1em;
-}
-
-.education article h3 {
-  grid-column: 1;         
-}
-
-.education article p:first-of-type {
-  grid-column: 1 / -1; 
-  font-style: italic;  
-}
-
-.education article p:nth-of-type(2) {
-  grid-row: 1;             
-  grid-column: 2;        
-  text-align: right;
-  white-space: nowrap;
-  color: gray;
-}
-
 dl {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
